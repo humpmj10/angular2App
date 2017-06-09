@@ -21,6 +21,6 @@ export class CreateEventComponent {
     }
 
     cancel() {
-        router.
+        this.router.navigate(['/events']);
     }
 }

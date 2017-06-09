@@ -6,8 +6,10 @@ import { EventsListComponent } from './events/events-list.component'
 import { EventThumbnailComponent } from './events/event-thumbnail.component'
 import { NavBarComponent } from './nav/navbar-component'
 import { EventService } from './events/shared/event-service'
+import { EventRouteActivator } from './events/event-details/event-route-activator.service'
 import { EventDetailsComponent } from './events/event-details/event-details.component'
 import { CreateEventComponent } from './events/shared/create-event.component'
+import { Error404Component } from './errors/404.component'
 import { appRoutes } from './routes'
 
 @NgModule({
@@ -21,9 +23,13 @@ import { appRoutes } from './routes'
         EventThumbnailComponent,
         EventDetailsComponent,
         NavBarComponent,
+        Error404Component,
         CreateEventComponent
     ],
-    providers: [EventService],
+    providers: [
+        EventService,
+        EventRouteActivator
+    ],
     bootstrap: [EventsAppComponent]
 })
 export class AppModule { }
