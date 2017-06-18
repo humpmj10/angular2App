@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { RouterModule } from '@angular/router'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import {
     EventThumbnailComponent,
     EventsListComponent,
@@ -9,10 +10,9 @@ import {
     EventDetailsComponent,
     CreateEventComponent,
     EventListResolver,
+    CreateSessionComponent
 } from './events/index'
-import {
-    LoginComponent
-} from './user/index'
+import { AuthService } from './user/auth.service'
 import { EventsAppComponent } from './events-app.component'
 import { NavBarComponent } from './nav/navbar-component'
 import { Error404Component } from './errors/404.component'
@@ -21,6 +21,8 @@ import { appRoutes } from './routes'
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot(appRoutes)
     ],
     declarations: [
@@ -31,12 +33,13 @@ import { appRoutes } from './routes'
         NavBarComponent,
         Error404Component,
         CreateEventComponent,
-        LoginComponent
+        CreateSessionComponent
     ],
     providers: [
         EventService,
         EventRouteActivator,
         EventListResolver,
+        AuthService,
         {
             provide: 'canDeactivateCreateEvent',
             useValue: checkDirtyState
